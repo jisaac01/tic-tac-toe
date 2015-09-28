@@ -10,16 +10,10 @@ class Board
   attr_accessor :board, :player_1_position, :player_2_position
   def initialize
     self.board = [
-     [0, 0, 0, 1, 0, 0, 0],
-     [0, 0, 0, 0, 0, 0, 0], 
-     [0, 0, 0, 0, 0, 0, 0],
-     [0, 0, 0, 0, 0, 0, 0],
-     [0, 0, 0, 0, 0, 0, 0],
-     [0, 0, 0, 0, 0, 0, 0],
-     [0, 0, 0, 2, 0, 0, 0],
+     [0, 0, 0],
+     [0, 0, 0],
+     [0, 0, 0],
     ]
-    self.player_1_position = [0, 3]
-    self.player_2_position = [6, 3]
   end
   
   def to_s
@@ -30,10 +24,12 @@ class Board
       puts " - - - - - - -"
   end
   
-  def has_moves?(player)
-    unnoccupied_neighbors(current_position(player)).size > 0
-  end
-    
+  def winning_game(player_id)
+    board.each do |row|
+      
+    end
+  end    
+  
   def current_position(player)
     player == 1 ? player_1_position : player_2_position
   end

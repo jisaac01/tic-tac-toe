@@ -9,7 +9,7 @@ class Intelligence
   
   def move
     next_position = game.possible_moves.shuffle.first
-    "#{next_position.first} #{next_position.last}"
+    "#{next_position.last} #{next_position.first}"
   end
   
 end
@@ -21,7 +21,6 @@ class Game
   
   def initialize(board_logic)
     self.board_logic = board_logic
-    # rank_squares
   end
   
   def possible_moves
@@ -75,13 +74,14 @@ end
 
 class Reader
   BOARDSIZE = 3
-  INPUTSIZE = 8
+  INPUTSIZE = 4
   def self.read
     input = []
-    while (row = gets)
+    INPUTSIZE.times do 
+      row = gets
       input << row
     end
-    
+
     raise "Too many input lines!" if input.size > INPUTSIZE
       
     squares = []
