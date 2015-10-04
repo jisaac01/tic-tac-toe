@@ -9,7 +9,7 @@ class Intelligence
   
   def move
     next_position = game.possible_moves.shuffle.first
-    "#{next_position.last} #{next_position.first}"
+    "#{next_position.first} #{next_position.last}"
   end
   
 end
@@ -38,6 +38,14 @@ class Board
     self.opponent_id = player_id == 1 ? 2 : 1
   end
   
+  def to_s
+    puts "Player #{player_id}'s board: "
+    squares.each do |row|
+      puts " - - - "
+      puts "|#{row.join('|').gsub('0',' ').gsub('1','X').gsub('2','O')}|" 
+    end
+      puts " - - - "
+  end
   
   def each_square(&block)
     squares.each_with_index do |row, index|
@@ -56,7 +64,11 @@ class BoardLogic
   def initialize(squares, player_id)
     self.board = Board.new(squares, player_id)
   end
-  
+
+  def to_s
+    board.to_s
+  end
+    
   def all_open_squares
     open_squares = [] 
     board.each_square do |row, column|
@@ -101,6 +113,8 @@ def run
   game = Game.new(current_board)
   ai = Intelligence.new(game)
   puts ai.move
+  puts current_board.all_open_squares.to_s
+  puts game.possible_moves.shuffle.to_s
 end
 
 run
