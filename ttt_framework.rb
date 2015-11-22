@@ -37,6 +37,7 @@ class Board
       end
     end    
   end  
+  
   def winner?
     horizontal_winner? ||
     vertical_winner? ||
@@ -99,7 +100,9 @@ loop do
     puts "stdout.gets: #{move = stdout.gets}"
     # puts "stdout.gets: #{random_junk = stdout.gets}"
     # puts "stdout.gets: #{random_junk = stdout.gets}"
-    puts "stderr.gets: #{error = stderr.gets}"
+    while(error = stderr.gets)
+      puts "stderr.gets: #{error}"
+    end
   end
   
   # verify that the output is valid  
